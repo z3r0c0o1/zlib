@@ -1,5 +1,6 @@
 module self::distribute_coins {
     use std::vector;
+    use aptos_std::math64::min;
     use aptos_framework::aptos_account;
     use aptos_framework::coin;
     use self::random;
@@ -31,6 +32,7 @@ module self::distribute_coins {
         let rand_seed = random::seed_no_sender();
 
         // Randomly distribute the remaining coins
+        let quarter_rem = remaining_coins/4;
         while (remaining_coins > 0) {
             let i = 0;
             while (i < num_people) {
@@ -41,7 +43,7 @@ module self::distribute_coins {
                 let extra_coin = if (remaining_coins == 1) {
                     1
                 } else {
-                    random::rand_u64_range(&mut rand_seed, 0, remaining_coins)
+                    random::rand_u64_range(&mut rand_seed, 0, min(remaining_coins, quarter_rem))
                 };
                 remaining_coins = remaining_coins - extra_coin;
 
