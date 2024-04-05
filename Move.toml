@@ -1,0 +1,16 @@
+[package]
+name = "zlib"
+version = "1.0.0"
+authors = []
+
+[addresses]
+self = "0x955db861bd17a4cac724ed1eca2963fb8f35bb691198e4c032006ddcc08e026a"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]
